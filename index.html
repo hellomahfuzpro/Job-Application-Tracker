@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    
+    <style type="text/tailwindcss">
+        *{
+            font-family: "Geist", sans-serif;
+        }
+
+        @theme {
+        --color-brand: #002C5C;
+        --color-brand-blue: #3B82F6;
+        }
+
+
+
+        .interview-active .job-status {
+            background: #00C950;
+            color: #fff;
+        }
+
+        .rejected-active .job-status{
+            background:#FB2C36;
+            color:#fff;
+        }
+
+        .delete{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-[#F8FAFC]">
+
+    <div id="application-dashboard" class="max-w-[1200px] mx-auto py-20 px-5">
+        <section id="top-container" class="border-b border-gray-200 pb-7">
+            <h1 class="text-3xl text-brand font-bold mb-3">Job Application Tracker</h1>
+
+            <div id="stats-container" class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+                <div class="border border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1">
+                    Total
+
+                    <span id="total-number" class="text-2xl text-brand font-bold">8</span>
+                </div>
+
+                <div class="border b-1 border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1">
+                    Interview
+
+                    <span id="interview-number" class="text-2xl text-green-500 font-bold">0</span>
+                </div>
+
+                <div class="border b-1 border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1">
+                    Rejected
+
+                    <span id="rejected-number" class="text-2xl text-red-500 font-bold">0</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="list-container" class="py-7">
+            <div class="listing-header flex-row flex justify-between">
+                <h3 class="text-brand text-2xl font-semibold">Available Jobs</h3>
+
+                <div id="available-job-number" class="text-neutral/50">8 jobs</div>
+            </div>
+
+
+            <div class="tabs gap-3 pt-2 pb-7">
+                <button id="all-tab" class="tab-button btn w-[100px] btn-primary border-0 border-gray-200 bg-[#3B82F6] font-normal">All</button>
+                
+                <button id="interview-tab" class="tab-button btn w-[100px] btn-primary border border-gray-200 bg-white font-normal  shadow-none text-gray-500">Interview</button>
+                
+                <button id="rejected-tab" class="tab-button btn w-[100px] btn-primary border border-gray-200 bg-white font-normal shadow-none text-gray-500">Rejected</button>
+            </div>
+
+
+            <div class="jobs gap-6 flex flex-col">
+                <div class="job border border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1 relative">
+                    <h4 class="job-name text-xl text-brand font-semibold">Mobile First Corp</h4>
+                    <p class="job-title text-lg text-neutral/50 font-normal">React Native Developer</p>
+
+                    <p class="job-details text-neutral/40 py-2.5">Remote • Full-time • $130,000 - $175,000</p>
+
+                    <span  class="btn btn-soft uppercase max-w-[150px] shadow-none bg-[#EEF4FF] hover:bg-none border-0 cursor-default job-status rounded-full" >Not Applied</span>
+
+                    <p class="job-description pt-3 pb-3 text-neutral/70">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+
+                    <div class="btn-group gap-3 flex">
+                        <button class="interview-button btn btn-outline border-green-500 text-green-500 uppercase font-bold hover:bg-green-500 hover:text-white">Interview</button>
+                        <button class="rejected-button btn btn-outline border-red-500 text-red-500  uppercase font-bold hover:bg-red-500 hover:text-white">Rejected</button>
+                    </div>
+
+                    <button class="delete h-10 w-10 text-center border border-gray-200 rounded-full flex flex-row justify-center items-center p-3 absolute right-5 top-5">
+                        <img src="assets/images/delete-recycle-bin-trash-can-svgrepo-com.svg" alt="" srcset="">
+                    </button>
+                </div>
+
+
+                <div class="job border border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1 relative">
+                    <h4 class="job-name text-xl text-brand font-semibold">WebFlow Agency</h4>
+                    <p class="job-title text-lg text-neutral/50 font-normal">Web Designer & Developer</p>
+
+                    <p class="job-details text-neutral/40 py-2.5">Los Angeles, CA • Part-time • $80,000 - $120,000</p>
+
+                    <span  class="btn btn-soft uppercase max-w-[150px] shadow-none bg-[#EEF4FF] hover:bg-none border-0 cursor-default job-status rounded-full" >Not Applied</span>
+
+                    <p class="job-description pt-3 pb-3 text-neutral/70">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
+
+                    <div class="btn-group gap-3 flex">
+                        <button class="interview-button btn btn-outline border-green-500 text-green-500 uppercase font-bold hover:bg-green-500 hover:text-white">Interview</button>
+                        <button class="rejected-button btn btn-outline border-red-500 text-red-500  uppercase font-bold hover:bg-red-500 hover:text-white">Rejected</button>
+                    </div>
+
+                    <button class="delete h-10 w-10 text-center border border-gray-200 rounded-full flex flex-row justify-center items-center p-3 absolute right-5 top-5">
+                        <img src="assets/images/delete-recycle-bin-trash-can-svgrepo-com.svg" alt="" srcset="">
+                    </button>
+                </div>
+
+
+                <div class="job border border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1 relative">
+                    <h4 class="job-name text-xl text-brand font-semibold">DataViz Solutions</h4>
+                    <p class="job-title text-lg text-neutral/50 font-normal">Data Visualization Specialist</p>
+
+                    <p class="job-details text-neutral/40 py-2.5">Boston, MA • Full-time • $125,000 - $165,000</p>
+
+                    <span  class="btn btn-soft uppercase max-w-[150px] shadow-none bg-[#EEF4FF] hover:bg-none border-0 cursor-default job-status rounded-full" >Not Applied</span>
+
+                    <p class="job-description pt-3 pb-3 text-neutral/70">Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.</p>
+
+                    <div class="btn-group gap-3 flex">
+                        <button class="interview-button btn btn-outline border-green-500 text-green-500 uppercase font-bold hover:bg-green-500 hover:text-white">Interview</button>
+                        <button class="rejected-button btn btn-outline border-red-500 text-red-500  uppercase font-bold hover:bg-red-500 hover:text-white">Rejected</button>
+                    </div>
+
+                    <button class="delete h-10 w-10 text-center border border-gray-200 rounded-full flex flex-row justify-center items-center p-3 absolute right-5 top-5">
+                        <img src="assets/images/delete-recycle-bin-trash-can-svgrepo-com.svg" alt="" srcset="">
+                    </button>
+                </div>
+
+                <div class="job border border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1 relative">
+                    <h4 class="job-name text-xl text-brand font-semibold">CloudFirst Inc</h4>
+                    <p class="job-title text-lg text-neutral/50 font-normal">Backend Developer</p>
+
+                    <p class="job-details text-neutral/40 py-2.5">Seattle, WA • Full-time • $140,000 - $190,000</p>
+
+                    <span  class="btn btn-soft uppercase max-w-[150px] shadow-none bg-[#EEF4FF] hover:bg-none border-0 cursor-default job-status rounded-full" >Not Applied</span>
+
+                    <p class="job-description pt-3 pb-3 text-neutral/70">Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.</p>
+
+                    <div class="btn-group gap-3 flex">
+                        <button class="interview-button btn btn-outline border-green-500 text-green-500 uppercase font-bold hover:bg-green-500 hover:text-white">Interview</button>
+                        <button class="rejected-button btn btn-outline border-red-500 text-red-500  uppercase font-bold hover:bg-red-500 hover:text-white">Rejected</button>
+                    </div>
+
+                    <button class="delete h-10 w-10 text-center border border-gray-200 rounded-full flex flex-row justify-center items-center p-3 absolute right-5 top-5">
+                        <img src="assets/images/delete-recycle-bin-trash-can-svgrepo-com.svg" alt="" srcset="">
+                    </button>
+                </div>
+
+                <div class="job border border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1 relative">
+                    <h4 class="job-name text-xl text-brand font-semibold">Innovation Labs</h4>
+                    <p class="job-title text-lg text-neutral/50 font-normal">UI/UX Engineer</p>
+
+                    <p class="job-details text-neutral/40 py-2.5">Austin, TX • Full-time • $110,000 - $150,000</p>
+
+                    <span  class="btn btn-soft uppercase max-w-[150px] shadow-none bg-[#EEF4FF] hover:bg-none border-0 cursor-default job-status rounded-full" >Not Applied</span>
+
+                    <p class="job-description pt-3 pb-3 text-neutral/70">Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.</p>
+
+                    <div class="btn-group gap-3 flex">
+                        <button class="interview-button btn btn-outline border-green-500 text-green-500 uppercase font-bold hover:bg-green-500 hover:text-white">Interview</button>
+                        <button class="rejected-button btn btn-outline border-red-500 text-red-500  uppercase font-bold hover:bg-red-500 hover:text-white">Rejected</button>
+                    </div>
+
+                    <button class="delete h-10 w-10 text-center border border-gray-200 rounded-full flex flex-row justify-center items-center p-3 absolute right-5 top-5">
+                        <img src="assets/images/delete-recycle-bin-trash-can-svgrepo-com.svg" alt="" srcset="">
+                    </button>
+                </div>
+
+                <div class="job border border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1 relative">
+                    <h4 class="job-name text-xl text-brand font-semibold">MegaCorp Solutions</h4>
+                    <p class="job-title text-lg text-neutral/50 font-normal">JavaScript Developer</p>
+
+                    <p class="job-details text-neutral/40 py-2.5">New York, NY • Full-time • $130,000 - $170,00</p>
+
+                    <span  class="btn btn-soft uppercase max-w-[150px] shadow-none bg-[#EEF4FF] hover:bg-none border-0 cursor-default job-status rounded-full" >Not Applied</span>
+
+                    <p class="job-description pt-3 pb-3 text-neutral/70">Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.</p>
+
+                    <div class="btn-group gap-3 flex">
+                        <button class="interview-button btn btn-outline border-green-500 text-green-500 uppercase font-bold hover:bg-green-500 hover:text-white">Interview</button>
+                        <button class="rejected-button btn btn-outline border-red-500 text-red-500  uppercase font-bold hover:bg-red-500 hover:text-white">Rejected</button>
+                    </div>
+
+                    <button class="delete h-10 w-10 text-center border border-gray-200 rounded-full flex flex-row justify-center items-center p-3 absolute right-5 top-5">
+                        <img src="assets/images/delete-recycle-bin-trash-can-svgrepo-com.svg" alt="" srcset="">
+                    </button>
+                </div>
+
+                <div class="job border border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1 relative">
+                    <h4 class="job-name text-xl text-brand font-semibold">StartupXYZ</h4>
+                    <p class="job-title text-lg text-neutral/50 font-normal">Full Stack Engineer</p>
+
+                    <p class="job-details text-neutral/40 py-2.5">Remote • Full-time • $120,000 - $160,000</p>
+
+                    <span  class="btn btn-soft uppercase max-w-[150px] shadow-none bg-[#EEF4FF] hover:bg-none border-0 cursor-default job-status rounded-full" >Not Applied</span>
+
+                    <p class="job-description pt-3 pb-3 text-neutral/70">Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.</p>
+
+                    <div class="btn-group gap-3 flex">
+                        <button class="interview-button btn btn-outline border-green-500 text-green-500 uppercase font-bold hover:bg-green-500 hover:text-white">Interview</button>
+                        <button class="rejected-button btn btn-outline border-red-500 text-red-500  uppercase font-bold hover:bg-red-500 hover:text-white">Rejected</button>
+                    </div>
+
+                    <button class="delete h-10 w-10 text-center border border-gray-200 rounded-full flex flex-row justify-center items-center p-3 absolute right-5 top-5">
+                        <img src="assets/images/delete-recycle-bin-trash-can-svgrepo-com.svg" alt="" srcset="">
+                    </button>
+                </div>
+
+                <div class="job border border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1 relative">
+                    <h4 class="job-name text-xl text-brand font-semibold">TechCorp Industries</h4>
+                    <p class="job-title text-lg text-neutral/50 font-normal">Senior Frontend Developer</p>
+
+                    <p class="job-details text-neutral/40 py-2.5">San Francisco, CA • Full-time • $130,000 - $175,000</p>
+
+                    <span  class="btn btn-soft uppercase max-w-[150px] shadow-none bg-[#EEF4FF] hover:bg-none border-0 cursor-default job-status rounded-full" >Not Applied</span>
+
+                    <p class="job-description pt-3 pb-3 text-neutral/70">We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.</p>
+
+                    <div class="btn-group gap-3 flex">
+                        <button class="interview-button btn btn-outline border-green-500 text-green-500 uppercase font-bold hover:bg-green-500 hover:text-white">Interview</button>
+                        <button class="rejected-button btn btn-outline border-red-500 text-red-500  uppercase font-bold hover:bg-red-500 hover:text-white">Rejected</button>
+                    </div>
+
+                    <button class="delete h-10 w-10 text-center border border-gray-200 rounded-full flex flex-row justify-center items-center p-3 absolute right-5 top-5">
+                        <img src="assets/images/delete-recycle-bin-trash-can-svgrepo-com.svg" alt="" srcset="">
+                    </button>
+                </div>
+            </div>
+
+
+            <div id="job-not-found" class=" border border-gray-200 rounded-lg bg-white p-6 flex flex-col text-neutral gap-1 text-center min-h-80 justify-center hidden">
+                <div class="icon-box w-20 mx-auto pb-2">
+                    <img src="assets/images/file.png" alt="">
+                </div>
+                <h4 class="job-name text-xl text-brand font-semibold">No jobs available</h4>
+                <p class="job-title text-lg text-neutral/50 font-normal">Check back soon for new job opportunities</p>
+            </div>
+        </section>
+    </div>
+    
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
